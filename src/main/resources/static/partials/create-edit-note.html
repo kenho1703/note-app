@@ -1,0 +1,27 @@
+<form name="noteForm" novalidate ng-submit="saveNote(noteForm)">
+    <md-input-container md-no-float="">
+        <input type="text" ng-change="onFromChange()" ng-trim="true" name="noteName" placeholder="Name" ng-model="note.name" required md-maxlength="10">
+        <div class="invalid-message" ng-show="noteForm.$submitted || noteForm.noteName.$touched">
+            <span ng-show="noteForm.noteName.$error.required">Note name is required!</span>
+            <span ng-show="noteForm.noteName.$error['md-maxlength']">Note name should be less than 10 characters</span>
+        </div>
+    </md-input-container>
+
+    <md-input-container md-no-float="">
+        <textarea ng-change="onFromChange()" ng-trim="true" class="note-body" placeholder="Note text" name="noteText" ng-model="note.text" rows="10" required md-maxlength="500">
+        </textarea>
+        <div class="invalid-message" ng-show="noteForm.$submitted || noteForm.noteText.$touched">
+            <span ng-show="noteForm.noteText.$error.required">Note text is required!</span>
+            <span ng-show="noteForm.noteText.$error['md-maxlength']">Note text should be less than 500 characters</span>
+        </div>
+    </md-input-container>
+
+    <div class="action-buttons">
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="!formValueChanged && note.id">
+            Save
+        </md-button>
+        <md-button class="button" ng-click="cancel()">
+            Cancel
+        </md-button>
+    </div>
+</form>

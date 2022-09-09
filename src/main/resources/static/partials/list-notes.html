@@ -1,0 +1,6 @@
+<ul class="notes-list">
+    <li ng-repeat="noteItem in notes" ng-click="viewNote(noteItem)" ng-class="{selected: noteItem.id === note.id}">
+        <h4 class="note-summary">{{noteItem.name}}</h4>
+        <p class="note-timedate"><i>{{noteItem.createdDate}}</i></p>
+    </li>
+</ul>

@@ -1,0 +1,32 @@
+<div class="notes-view" ng-init="init()">
+  <section class="notes-panel">
+    <div class="title">
+      <span>Notes</span>
+      <md-button class="md-raised md-primary" ng-click="newNoteView()">
+        Create Note
+      </md-button>
+    </div>
+
+
+    <div class="notes-list-scrollable"
+         ng-include="'partials/list-notes.html'"></div>
+
+  </section>
+  <section class="note-panel">
+    <div ng-if="isEditCreateView" ng-include="'partials/create-edit-note.html'"></div>
+
+    <div ng-if="notes.length > 0 && !isEditCreateView" class="empty-note">
+      <div class="message">
+        No note selected
+      </div>
+    </div>
+
+    <div class="empty-note" ng-if="!isEditCreateView && notes.length == 0">
+      <img src="/images/note.png" alt="note logo"/>
+
+      <div class="message">
+        You have no note, please create one
+      </div>
+    </div>
+  </section>
+</div>
